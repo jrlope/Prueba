@@ -1,0 +1,28 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "C:\\Users\\humbe\\Documents\\rep\\api\\ejemplo\\ejemplo.csproj",
+    "projectName": "ejemplo",
+    "projectPath": "C:\\Users\\humbe\\Documents\\rep\\api\\ejemplo\\ejemplo.csproj",
+    "outputPath": "C:\\Users\\humbe\\Documents\\rep\\api\\ejemplo\\",
+    "projectStyle": "PackageReference",
+    "originalTargetFrameworks": [
+      "netcoreapp2.1"
+    ],
+    "frameworks": {
+      "netcoreapp2.1": {
+        "projectReferences": {}
+      }
+    }
+  },
+  "frameworks": {
+    "netcoreapp2.1": {
+      "dependencies": {
+        "Microsoft.AspNetCore.App": {
+          "target": "Package",
+          "version": "(, )"
+        }
+      }
+    }
+  }
+}
