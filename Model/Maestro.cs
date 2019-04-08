@@ -22,6 +22,8 @@ namespace ejemplo.Model
         [Required, StringLength(50)]
         public string Apellido { get; set; }
 
+        public string NickName { get; set; }
+
         public string StringIdentifier { get; set; }
 
         public DateTime CreatedDate { get; set; }

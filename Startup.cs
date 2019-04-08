@@ -26,39 +26,37 @@ namespace ejemplo
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+        public void ConfigureServices(IServiceCollection services) {
+            
             services.AddDbContext<AppDbContext>(options =>
                     //options.UseInMemoryDatabase("InMemoryDB"));//For using In Memory DB
                     options.UseSqlServer(Configuration.GetConnectionString("AppDbContextDB"))); //For using SQL Server
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddSingleton<IConfiguration>(Configuration);
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
+            if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
-            }
-            else
-            {
+            } else {
                 app.UseHsts();
             }
-            app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
+            app.UseAuthentication();
             app.UseMvc(routes => {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller}/{action=Index}/{id?}");
-            }); ;
+            }); 
         }
     }
 }
